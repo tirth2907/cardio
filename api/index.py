@@ -18,31 +18,35 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-# Locate models directory
+# Resilient file locator
 BASE_DIR = Path(__file__).resolve().parent
-MODELS_DIRS = [
-    BASE_DIR / "models",
-    BASE_DIR.parent / "backend" / "models",
-    BASE_DIR.parent / "models",
-    Path.cwd() / "api" / "models",
-    Path.cwd() / "models"
-]
 
-models_dir = None
-for d in MODELS_DIRS:
-    if (d / "best_xgboost_model.json").exists():
-        models_dir = d
-        break
+def locate_file(filename):
+    candidates = [
+        BASE_DIR / filename,
+        BASE_DIR / "models" / filename,
+        Path.cwd() / "api" / filename,
+        Path.cwd() / "api" / "models" / filename,
+        Path.cwd() / "models" / filename,
+        Path.cwd() / "backend" / "models" / filename
+    ]
+    for c in candidates:
+        if c.exists():
+            return c
+    # Fallback walk
+    for root, _, files in os.walk(str(BASE_DIR.parent)):
+        if filename in files:
+            return Path(root) / filename
+    raise FileNotFoundError(f"Could not locate required model file: {filename}")
 
-if models_dir is None:
-    raise FileNotFoundError("Could not locate best_xgboost_model.json!")
+# Load model artifacts
+model_json_path = locate_file("best_xgboost_model.json")
+metadata_path = locate_file("model_metadata.json")
 
-# Load metadata
-with open(models_dir / "model_metadata.json") as f:
+with open(metadata_path) as f:
     model_metadata = json.load(f)
 
-# Load XGBoost JSON model
-with open(models_dir / "best_xgboost_model.json") as f:
+with open(model_json_path) as f:
     xgb_json = json.load(f)
 
 base_score = float(xgb_json["learner"]["learner_model_param"]["base_score"])

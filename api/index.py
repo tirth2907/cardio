@@ -129,6 +129,10 @@ def predict_xgboost_probability(scaled_features):
 
 
 @app.route("/", methods=["GET"])
+@app.route("/api", methods=["GET"])
+@app.route("/api/", methods=["GET"])
+@app.route("/api/index.py", methods=["GET"])
+@app.route("/api/index", methods=["GET"])
 def index():
     return jsonify({
         "service": "CardioSense ML REST API",
@@ -144,6 +148,7 @@ def index():
 
 
 @app.route("/api/health", methods=["GET"])
+@app.route("/health", methods=["GET"])
 def health():
     return jsonify({
         "status": "online",
@@ -157,11 +162,13 @@ def health():
 
 
 @app.route("/api/metrics", methods=["GET"])
+@app.route("/metrics", methods=["GET"])
 def metrics():
     return jsonify(model_metadata)
 
 
 @app.route("/api/predict", methods=["POST"])
+@app.route("/predict", methods=["POST"])
 def predict():
     try:
         data = request.get_json(force=True)
@@ -266,6 +273,19 @@ def predict():
         }), 500
 
 
+@app.route("/<path:subpath>", methods=["GET", "POST", "OPTIONS"])
+def catch_all(subpath):
+    subpath_clean = subpath.strip("/").lower()
+    if subpath_clean.endswith("health"):
+        return health()
+    if subpath_clean.endswith("metrics"):
+        return metrics()
+    if subpath_clean.endswith("predict") or request.method == "POST":
+        return predict()
+    return index()
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5001))
     app.run(host="0.0.0.0", port=port, debug=False)
+

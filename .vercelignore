@@ -18,3 +18,7 @@ start
 stop
 start.py
 stop.py
+*.pkl
+models/*.pkl
+backend/models/*.pkl
+api/models/*.pkl

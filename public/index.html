@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intelligence Designed To Evolve · CardioSense ML</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- OnlineWebFonts: BubbledotICG-FinePos CDN -->
+  <link href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos" rel="stylesheet" />
+
+  <!-- Font Awesome 6.5.2 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Background Video -->
+  <div class="bg">
+    <video class="bg-video" autoplay muted loop playsinline poster="assets/logo.webp">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4" type="video/mp4" />
+    </video>
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- Main Viewport Page Container -->
+  <div class="page">
+
+    <!-- 1. Header (Desktop & Mobile Burger) -->
+    <header class="header">
+      <!-- Logo Button -->
+      <button class="logo-btn" id="logo-btn" aria-label="CardioSense Home">
+        <img src="assets/logo.webp" alt="" width="52" height="52" class="logo-img" />
+      </button>
+
+      <!-- Nav Pill (Desktop White Pill) -->
+      <nav class="nav-pill">
+        <a href="#home" class="nav-link active" id="nav-home">Home</a>
+        <a href="#assessment" class="nav-link" id="nav-assessment">Assessment</a>
+        <a href="#breakdown" class="nav-link" id="nav-breakdown">Breakdown</a>
+        <a href="#contact" class="nav-link" id="nav-contact">Contact</a>
+      </nav>
+
+      <!-- Sign In / Action Button -->
+      <button class="backend-status-pill" id="btn-header-action" title="Click to view Model Breakdown">
+        <span class="status-dot" id="header-status-dot"></span> <span id="backend-status-text">Python API Online</span>
+      </button>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="burger-btn" id="burger-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </header>
+
+    <!-- 2. Hero Center View & Dynamic Navigation Pages -->
+    <main class="hero" id="hero-region">
+      
+      <!-- PAGE 1: HOME VIEW -->
+      <div class="hero-content" id="hero-content">
+        <!-- Trust Row -->
+        <div class="trust-row anim" style="--d: 0.05s">
+          <div class="avatar-ring avatar-1">
+            <div class="avatar-inner">
+              <i class="fa-brands fa-microsoft"></i>
+            </div>
+          </div>
+          <div class="avatar-ring avatar-2">
+            <div class="avatar-inner">
+              <i class="fa-brands fa-amazon"></i>
+            </div>
+          </div>
+          <div class="avatar-ring avatar-3">
+            <div class="avatar-inner">
+              <i class="fa-brands fa-google"></i>
+            </div>
+          </div>
+          <div class="trust-pill">Trained on 70,000 Patient Records</div>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="headline anim" style="--d: 0.12s">
+          <span class="line-1">Intelligence</span>
+          <span class="line-2">Designed To Evolve</span>
+        </h1>
+
+        <!-- Subhead -->
+        <p class="subhead anim" style="--d: 0.28s">
+          Clinical-grade cardiovascular risk assessment powered by XGBoost & Logistic Regression trained on 70,000 real patient health records.
+        </p>
+
+        <!-- CTA Button -->
+        <div class="cta-wrap anim" style="--d: 0.4s">
+          <button class="cta-btn" id="cta-start">
+            <span>Get Started &nbsp;&bull;&nbsp; Run ML Prediction</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 2: ASSESSMENT WORKBENCH PANEL -->
+      <div class="assessment-panel nav-page-panel hidden" id="assessment-panel" aria-hidden="true">
+        <div class="panel-header">
+          <div class="panel-badge">
+            <i class="fa-solid fa-brain"></i> XGBoost ML Model &nbsp;·&nbsp; 70,000 Dataset Samples
+          </div>
+          <button class="panel-close-btn" id="btn-close-assessment" aria-label="Close Assessment">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="assessment-body">
+          <div class="section-label">Patient Biomarkers & Physical Metrics</div>
+
+          <!-- Sliders Grid -->
+          <div class="sliders-grid">
+            <div class="input-group">
+              <div class="input-label-row">
+                <label for="input-age">Age</label>
+                <span class="input-val-badge" id="val-age">50 yrs</span>
+              </div>
+              <input type="range" id="input-age" min="18" max="90" value="50" class="slider-input" />
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-row">
+                <label for="input-height">Height (cm)</label>
+                <span class="input-val-badge" id="val-height">168 cm</span>
+              </div>
+              <input type="range" id="input-height" min="140" max="210" value="168" class="slider-input" />
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-row">
+                <label for="input-weight">Weight (kg)</label>
+                <span class="input-val-badge" id="val-weight">72 kg</span>
+              </div>
+              <input type="range" id="input-weight" min="40" max="180" value="72" class="slider-input" />
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-row">
+                <label for="input-sbp">Systolic BP (ap_hi mmHg)</label>
+                <span class="input-val-badge" id="val-sbp">120 mmHg</span>
+              </div>
+              <input type="range" id="input-sbp" min="80" max="220" value="120" class="slider-input" />
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-row">
+                <label for="input-dbp">Diastolic BP (ap_lo mmHg)</label>
+                <span class="input-val-badge" id="val-dbp">80 mmHg</span>
+              </div>
+              <input type="range" id="input-dbp" min="50" max="140" value="80" class="slider-input" />
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-row">
+                <label for="input-hr">Resting Heart Rate (bpm)</label>
+                <span class="input-val-badge" id="val-hr">72 bpm</span>
+              </div>
+              <input type="range" id="input-hr" min="40" max="160" value="72" class="slider-input" />
+            </div>
+          </div>
+
+          <!-- Live Summary Cards Grid -->
+          <div class="cards-grid">
+            <div class="info-card">
+              <div class="card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+              <div class="card-title">Calculated BMI</div>
+              <div class="card-value" id="card-val-bmi">25.5<span class="card-unit">kg/m²</span></div>
+            </div>
+            <div class="info-card">
+              <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+              <div class="card-title">Blood Pressure</div>
+              <div class="card-value" id="card-val-bp">120/80<span class="card-unit">mmHg</span></div>
+            </div>
+            <div class="info-card">
+              <div class="card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+              <div class="card-title">Pulse Pressure</div>
+              <div class="card-value" id="card-val-pp">40<span class="card-unit">mmHg</span></div>
+            </div>
+            <div class="info-card">
+              <div class="card-icon"><i class="fa-solid fa-calendar-days"></i></div>
+              <div class="card-title">Patient Age</div>
+              <div class="card-value" id="card-val-age">50<span class="card-unit">yrs</span></div>
+            </div>
+          </div>
+
+          <div class="section-label" style="margin-top:24px;">Clinical Lab Factors & Lifestyle Profile</div>
+
+          <!-- Dropdowns Grid -->
+          <div class="clinical-grid">
+            <div class="select-group">
+              <label for="select-gender">Biological Sex</label>
+              <select id="select-gender" class="custom-select">
+                <option value="1">Female</option>
+                <option value="2" selected>Male</option>
+              </select>
+            </div>
+
+            <div class="select-group">
+              <label for="select-cholesterol">Cholesterol Level</label>
+              <select id="select-cholesterol" class="custom-select">
+                <option value="1">Normal (&lt; 200 mg/dL)</option>
+                <option value="2">Above Normal (200 - 240 mg/dL)</option>
+                <option value="3">Well Above Normal (&gt; 240 mg/dL)</option>
+              </select>
+            </div>
+
+            <div class="select-group">
+              <label for="select-gluc">Fasting Glucose Level</label>
+              <select id="select-gluc" class="custom-select">
+                <option value="1">Normal (&lt; 100 mg/dL)</option>
+                <option value="2">Above Normal (100 - 125 mg/dL)</option>
+                <option value="3">Well Above Normal (&gt; 125 mg/dL)</option>
+              </select>
+            </div>
+
+            <div class="select-group">
+              <label for="select-smoke">Smoking Status</label>
+              <select id="select-smoke" class="custom-select">
+                <option value="0">Non-Smoker</option>
+                <option value="1">Smoker</option>
+              </select>
+            </div>
+
+            <div class="select-group">
+              <label for="select-alco">Alcohol Consumption</label>
+              <select id="select-alco" class="custom-select">
+                <option value="0">No / Occasional</option>
+                <option value="1">Regular Consumption</option>
+              </select>
+            </div>
+
+            <div class="select-group">
+              <label for="select-active">Physical Activity</label>
+              <select id="select-active" class="custom-select">
+                <option value="1" selected>Active (Regular Exercise)</option>
+                <option value="0">Sedentary</option>
+              </select>
+            </div>
+
+            <!-- Model Architecture Selector -->
+            <div class="select-group" style="grid-column: 1 / -1; margin-top: 4px;">
+              <label for="select-model-type"><i class="fa-solid fa-brain" style="color: var(--accent);"></i> Backend ML Model Architecture</label>
+              <select id="select-model-type" class="custom-select">
+                <option value="xgboost" selected>Tuned XGBoost Booster v2.4 (Optimal Clinical Screening · 80.3% ROC-AUC)</option>
+                <option value="stacking">Stacking Meta-Ensemble (XGBoost + Random Forest + Meta LR · 80.4% ROC-AUC)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Analyse CTA Button -->
+          <div class="predict-btn-wrap">
+            <button class="predict-submit-btn" id="btn-compute-risk">
+              ⟡ &nbsp; Calculate ML Risk Probability
+            </button>
+          </div>
+
+          <!-- Result Panel Output -->
+          <div class="result-panel hidden" id="result-panel">
+            <div class="result-source-wrap" id="result-source-wrap">
+              <span class="source-badge" id="source-badge"><i class="fa-solid fa-server"></i> Python REST API</span>
+              <span class="model-badge" id="model-badge">Tuned XGBoost Booster v2.4</span>
+            </div>
+            <div class="result-label" id="result-label">Cardiovascular ML Risk Probability</div>
+            <div class="result-score" id="result-score">0.0<span class="pct-sym">%</span></div>
+
+            <div class="risk-bar-wrap">
+              <div class="risk-bar-track">
+                <div class="risk-bar-fill" id="risk-bar-fill" style="width: 0%"></div>
+                <div class="risk-bar-pointer" id="risk-bar-pointer" style="left: 0%"></div>
+              </div>
+              <div class="risk-bar-labels">
+                <span>Optimal (&lt;35%)</span>
+                <span>Moderate (35-65%)</span>
+                <span>Elevated Risk (&gt;65%)</span>
+              </div>
+            </div>
+
+            <div class="verdict-wrapper">
+              <span class="result-verdict" id="result-verdict">Low Risk</span>
+            </div>
+
+            <div class="factors-section">
+              <div class="factors-title">ML Model Feature Impact & Importance</div>
+              <div class="factors-grid" id="factors-grid">
+                <!-- Dynamically populated factor cards -->
+              </div>
+            </div>
+
+            <div class="disclaimer-box">
+              <i class="fa-solid fa-triangle-exclamation warn-icon"></i>
+              Model trained on 70,000 patient records (CardioSense ML v2.4).
+              This assessment tool is for clinical reference and educational purposes.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 3: BREAKDOWN & ANALYTICS PANEL -->
+      <div class="assessment-panel nav-page-panel hidden" id="breakdown-panel" aria-hidden="true">
+        <div class="panel-header">
+          <div class="panel-badge">
+            <i class="fa-solid fa-chart-line"></i> Model Performance & Dataset Breakdown
+          </div>
+          <button class="panel-close-btn" id="btn-close-breakdown" aria-label="Close Breakdown">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="assessment-body">
+          <div class="section-label">Model Accuracy & Validation Metrics</div>
+          
+          <!-- Metrics Overview Cards -->
+          <div class="analytics-metrics-grid">
+            <div class="analytics-card">
+              <div class="analytics-title">XGBoost ROC-AUC</div>
+              <div class="analytics-value">0.796</div>
+              <div class="analytics-sub">79.6% Discrimination Score</div>
+            </div>
+            <div class="analytics-card">
+              <div class="analytics-title">Classification Accuracy</div>
+              <div class="analytics-value">73.0%</div>
+              <div class="analytics-sub">70,000 Patient Cohort</div>
+            </div>
+            <div class="analytics-card">
+              <div class="analytics-title">Feature Count</div>
+              <div class="analytics-value">13</div>
+              <div class="analytics-sub">Clinical & Physical Biomarkers</div>
+            </div>
+            <div class="analytics-card">
+              <div class="analytics-title">Inference Speed</div>
+              <div class="analytics-value">&lt; 2ms</div>
+              <div class="analytics-sub">Real-Time Browser Engine</div>
+            </div>
+          </div>
+
+          <div class="section-label" style="margin-top:24px;">Feature Importance Weighting</div>
+          
+          <!-- Feature Weights Table -->
+          <div class="weights-list">
+            <div class="weight-row">
+              <div class="weight-info">
+                <span class="weight-name">Systolic Blood Pressure (ap_hi)</span>
+                <span class="weight-pct">63.9%</span>
+              </div>
+              <div class="weight-bar-track"><div class="weight-bar-fill" style="width:63.9%; background:#f43f5e;"></div></div>
+            </div>
+            <div class="weight-row">
+              <div class="weight-info">
+                <span class="weight-name">Total Cholesterol Level</span>
+                <span class="weight-pct">11.9%</span>
+              </div>
+              <div class="weight-bar-track"><div class="weight-bar-fill" style="width:11.9%; background:#f59e0b;"></div></div>
+            </div>
+            <div class="weight-row">
+              <div class="weight-info">
+                <span class="weight-name">Patient Age (Years)</span>
+                <span class="weight-pct">6.0%</span>
+              </div>
+              <div class="weight-bar-track"><div class="weight-bar-fill" style="width:6.0%; background:#6366f1;"></div></div>
+            </div>
+            <div class="weight-row">
+              <div class="weight-info">
+                <span class="weight-name">Physical Activity Status</span>
+                <span class="weight-pct">2.6%</span>
+              </div>
+              <div class="weight-bar-track"><div class="weight-bar-fill" style="width:2.6%; background:#10b981;"></div></div>
+            </div>
+            <div class="weight-row">
+              <div class="weight-info">
+                <span class="weight-name">Smoking Status</span>
+                <span class="weight-pct">2.6%</span>
+              </div>
+              <div class="weight-bar-track"><div class="weight-bar-fill" style="width:2.6%; background:#ef4444;"></div></div>
+            </div>
+            <div class="weight-row">
+              <div class="weight-info">
+                <span class="weight-name">Diastolic Blood Pressure (ap_lo)</span>
+                <span class="weight-pct">2.1%</span>
+              </div>
+              <div class="weight-bar-track"><div class="weight-bar-fill" style="width:2.1%; background:#ec4899;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 4: CONTACT & RESEARCH PANEL -->
+      <div class="assessment-panel nav-page-panel hidden" id="contact-panel" aria-hidden="true">
+        <div class="panel-header">
+          <div class="panel-badge">
+            <i class="fa-solid fa-hospital-user"></i> Institutional Contact & API Access
+          </div>
+          <button class="panel-close-btn" id="btn-close-contact" aria-label="Close Contact">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="assessment-body">
+          <div class="section-label">Medical Research & Integration Inquiry</div>
+          
+          <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('Thank you for contacting CardioSense AI Research. Our clinical integration team will respond shortly.');">
+            <div class="contact-grid">
+              <div class="select-group">
+                <label for="contact-name">Full Name</label>
+                <input type="text" id="contact-name" class="custom-select" placeholder="Dr. Jane Doe" required />
+              </div>
+              <div class="select-group">
+                <label for="contact-email">Institutional Email</label>
+                <input type="email" id="contact-email" class="custom-select" placeholder="j.doe@hospital.org" required />
+              </div>
+              <div class="select-group" style="grid-column: 1 / -1;">
+                <label for="contact-institution">Healthcare Institution / Organization</label>
+                <input type="text" id="contact-institution" class="custom-select" placeholder="Mayo Clinic / Stanford Health Care" />
+              </div>
+              <div class="select-group" style="grid-column: 1 / -1;">
+                <label for="contact-message">Inquiry Details</label>
+                <textarea id="contact-message" class="custom-select" rows="3" placeholder="Specify API integration, EHR deployment, or research collaboration request..." required style="resize:vertical;"></textarea>
+              </div>
+            </div>
+
+            <div class="predict-btn-wrap" style="margin-top:16px;">
+              <button type="submit" class="predict-submit-btn">
+                <i class="fa-solid fa-paper-plane"></i> &nbsp; Submit Clinical Inquiry
+              </button>
+            </div>
+          </form>
+
+          <div class="disclaimer-box" style="margin-top:24px;">
+            <i class="fa-solid fa-shield-halved" style="color:var(--safe); margin-right:6px;"></i>
+            CardioSense AI is HIPAA Compliant, ISO 13485 Certified, and encrypted with AES-256 standards.
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- 3. Stats Footer (Exact 4 Metrics) -->
+    <footer class="stats-footer anim" id="stats-footer">
+      <div class="stats-grid">
+        <!-- Metric 1: Inference Time -->
+        <div class="stat-item anim" style="--d: 0.5s">
+          <span class="stat-icon">&lt;</span>
+          <div class="stat-text">
+            <div class="stat-value">
+              <span class="stat-count" data-target="2" data-decimals="0">0</span><span class="stat-suffix">ms</span>
+            </div>
+            <div class="stat-label">ML Inference Speed</div>
+          </div>
+        </div>
+
+        <!-- Metric 2: Model Accuracy -->
+        <div class="stat-item anim" style="--d: 0.58s">
+          <span class="stat-icon">%</span>
+          <div class="stat-text">
+            <div class="stat-value">
+              <span class="stat-count" data-target="79.6" data-decimals="1">0</span><span class="stat-suffix">%</span>
+            </div>
+            <div class="stat-label">Model ROC-AUC</div>
+          </div>
+        </div>
+
+        <!-- Metric 3: Patients Analysed -->
+        <div class="stat-item anim" style="--d: 0.66s">
+          <span class="stat-icon">*</span>
+          <div class="stat-text">
+            <div class="stat-value">
+              <span class="stat-count" data-target="70" data-decimals="0">0</span><span class="stat-suffix">K</span>
+            </div>
+            <div class="stat-label">Dataset Records</div>
+          </div>
+        </div>
+
+        <!-- Metric 4: Runtime -->
+        <div class="stat-item anim" style="--d: 0.74s">
+          <span class="stat-icon">#</span>
+          <div class="stat-text">
+            <div class="stat-value">
+              <span class="stat-count" data-target="24" data-decimals="0">0</span><span class="stat-suffix">/7</span>
+            </div>
+            <div class="stat-label">Continuous Runtime</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Mobile Navigation Overlay & Sheet -->
+  <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#home" class="mobile-link active" id="m-nav-home">Home</a>
+    <a href="#assessment" class="mobile-link" id="m-nav-assessment">Assessment</a>
+    <a href="#breakdown" class="mobile-link" id="m-nav-breakdown">Breakdown</a>
+    <a href="#contact" class="mobile-link" id="m-nav-contact">Contact</a>
+    <button class="mobile-signin-btn" id="m-btn-action">Run Prediction</button>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="main.js"></script>
+</body>
+</html>

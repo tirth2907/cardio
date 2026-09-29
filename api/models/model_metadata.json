@@ -1,0 +1,61 @@
+{
+  "model_name": "CardioSense ML Production Engine",
+  "version": "2.4.0",
+  "framework": "XGBoost + Scikit-Learn Stacking Ensemble",
+  "features": [
+    "age",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "bmi",
+    "pulse_pressure",
+    "gender",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active"
+  ],
+  "continuous_features": [
+    "age",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "bmi",
+    "pulse_pressure"
+  ],
+  "categorical_features": [
+    "gender",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active"
+  ],
+  "optimal_threshold": 0.35,
+  "metrics": {
+    "xgboost_roc_auc": 0.8033,
+    "xgboost_accuracy": 73.44,
+    "stacking_roc_auc": 0.8037,
+    "stacking_accuracy": 73.52,
+    "recall_at_optimal_threshold": 0.8392,
+    "f1_at_optimal_threshold": 0.741
+  },
+  "feature_importances": {
+    "age": 0.08175688982009888,
+    "height": 0.010292001999914646,
+    "weight": 0.018510669469833374,
+    "ap_hi": 0.6374191641807556,
+    "ap_lo": 0.021474618464708328,
+    "bmi": 0.01809670217335224,
+    "pulse_pressure": 0.013861256651580334,
+    "gender": 0.010518203489482403,
+    "cholesterol": 0.09814409166574478,
+    "gluc": 0.01925707794725895,
+    "smoke": 0.02061609923839569,
+    "alco": 0.018845582380890846,
+    "active": 0.0312076136469841
+  }
+}

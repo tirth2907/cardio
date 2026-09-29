@@ -1,0 +1,20 @@
+.git
+.github
+.ipynb_checkpoints
+cardioDemo.ipynb
+cardioDemo copy.ipynb
+cardio/
+ML_SOP_Project.pdf
+walkthrough.html
+walkthrough.md
+frontend_backup_checkpoint/
+scripts/
+update_notebook.py
+CardioSense_Project_Log_and_Chat.docx
+__pycache__/
+*.pyc
+.DS_Store
+start
+stop
+start.py
+stop.py

@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Jupyter Notebook checkpoints & scratch files
+.ipynb_checkpoints/
+cardioDemo copy.ipynb
+
+# Local backup folders
+frontend_backup_checkpoint/
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
